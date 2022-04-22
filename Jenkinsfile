@@ -11,6 +11,9 @@ pipeline{
 
     environment{
         GIT_COMMIT_HASH = getVersion()
+        host = "$host"
+        sonar_pass = "$sonar_pass"
+        sonar_user = "$sonar_user"
     }
 
     stages{
@@ -33,7 +36,8 @@ pipeline{
                 echo "[INFO] Performing analysis with Sonarqube"
                 script{
                     withSonarQubeEnv(credentialsId: 'sonartoken'){
-                        sh 'mvn clean verify sonar:sonar -Dsonar.analysis.mode=publish'
+                        sh 'mvn clean verify sonar:sonar -Dsonar.host.url=$host -Dsonar.login=$sonar_user -Dsonar.password=$sonar_pass'
+                        sh 'cat target/sonar/report-task.txt'
                     }
                 }
             }
