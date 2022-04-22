@@ -33,7 +33,7 @@ pipeline{
                 echo "[INFO] Performing analysis with Sonarqube"
                 script{
                     withSonarQubeEnv(credentialsId: 'sonartoken'){
-                        sh 'mvn clean verify sonar:sonar'
+                        sh 'mvn clean verify sonar:sonar -Dsonar.analysis.mode=publish'
                     }
                 }
             }
