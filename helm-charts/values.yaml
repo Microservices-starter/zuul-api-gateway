@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: rajputmarch2020/zuul_apigw
+  pullPolicy: Always
+  tag: ""
+
+service:
+  type: NodePort
+  port: 9999
+  targetport: 9999
+  nodeport: 32760
+  name: zuul-apigw
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
