@@ -93,7 +93,7 @@ pipeline{
                 script{
                     dir('helm-charts'){
                         withEnv(['DATREE_TOKEN=ao1RpL3G3LMRL6eucy37hv']){
-                            sh 'helm datree test wishlist/'
+                            sh 'helm datree test zuul/'
                         }
                     }
                 }
